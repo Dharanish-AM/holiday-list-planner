@@ -1,6 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 21, "column": 0}, "map": {"version":3,"sources":["turbopack:///[project]/src/middleware.js"],"sourcesContent":["import { NextResponse } from \"next/server\";\n\nexport function middleware(request) {\n  if (\n    request.nextUrl.pathname.startsWith(\"/api/holiday\") &&\n    (request.method === \"POST\" ||\n      request.method === \"PUT\" ||\n      request.method === \"DELETE\")\n  ) {\n    const authHeader = request.headers.get(\"authorization\");\n\n    if (!authHeader || !authHeader.startsWith(\"Bearer \")) {\n      return NextResponse.json(\n        { error: \"Authentication required\" },\n        { status: 401 }\n      );\n    }\n  }\n\n  return NextResponse.next();\n}\n\nexport const config = {\n  matcher: [\"/api/holiday/:path*\", \"/admin/:path*\"],\n};\n"],"names":[],"mappings":";;;;AAAA;AAAA;;AAEO,SAAS,WAAW,OAAO;IAChC,IACE,QAAQ,OAAO,CAAC,QAAQ,CAAC,UAAU,CAAC,mBACpC,CAAC,QAAQ,MAAM,KAAK,UAClB,QAAQ,MAAM,KAAK,SACnB,QAAQ,MAAM,KAAK,QAAQ,GAC7B;QACA,MAAM,aAAa,QAAQ,OAAO,CAAC,GAAG,CAAC;QAEvC,IAAI,CAAC,cAAc,CAAC,WAAW,UAAU,CAAC,YAAY;YACpD,OAAO,6LAAA,CAAA,eAAY,CAAC,IAAI,CACtB;gBAAE,OAAO;YAA0B,GACnC;gBAAE,QAAQ;YAAI;QAElB;IACF;IAEA,OAAO,6LAAA,CAAA,eAAY,CAAC,IAAI;AAC1B;AAEO,MAAM,SAAS;IACpB,SAAS;QAAC;QAAuB;KAAgB;AACnD"}}]
-}
